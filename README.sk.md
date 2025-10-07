@@ -9,7 +9,6 @@
 [![Commercial License](https://img.shields.io/badge/license-Commercial-green.svg)](LICENSE.commercial)
 [![Code Style](https://img.shields.io/badge/code%20style-eslint-brightgreen.svg)](https://eslint.org)
 
-[🇸🇰 Slovenská verzia](README.sk.md)
 
 Inteligentný crawler na extrahovanie pracovných ponúk z portálu Profesia.sk, vytvorený s Apify SDK a Crawlee technológiami. Projekt implementuje sofistikované získavanie dát s rešpektovaním zásad etického web scrapingu.
 
