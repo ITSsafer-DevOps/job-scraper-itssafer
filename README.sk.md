@@ -9,53 +9,26 @@
 [![Commercial License](https://img.shields.io/badge/license-Commercial-green.svg)](LICENSE.commercial)
 [![Code Style](https://img.shields.io/badge/code%20style-eslint-brightgreen.svg)](https://eslint.org)
 
-[🇬🇧 English version](README.md)
+[🇸🇰 Slovenská verzia](README.sk.md)
 
-Inteligentný crawler pre extrakciu pracovných ponúk z portálu Profesia.sk, postavený na technológiách Apify SDK a Crawlee. Projekt implementuje sofistikované získavanie dát s ohľadom na etické zásady web scrapingu.
+Inteligentný crawler na extrahovanie pracovných ponúk z portálu Profesia.sk, vytvorený s Apify SDK a Crawlee technológiami. Projekt implementuje sofistikované získavanie dát s rešpektovaním zásad etického web scrapingu.
 
 ## 🎯 O Projekte
 
-Tento nástroj je navrhnutý ako sofistikované riešenie pre automatizovaný zber pracovných ponúk z portálu Profesia.sk. Využíva moderné technológie a osvedčené postupy pre etický web scraping:
+Tento nástroj je navrhnutý ako sofistikované riešenie pre automatizované zbieranie pracovných ponúk z Profesia.sk. Využíva moderné technológie a osvedčené postupy pre etický web scraping:
 
 ### Kľúčové Funkcie
 
-- **Inteligentný Crawling**: Rešpektuje robots.txt a implementuje pokročilé obmedzenie požiadaviek
+- **Inteligentný Crawling**: Rešpektuje robots.txt a implementuje pokročilé rate limiting
 - **Robustné Spracovanie**: Spoľahlivá extrakcia a normalizácia dát
-- **Flexibilná Konfigurácia**: Jednoduchá prispôsobiteľnosť cez .env súbor
-- **Kvalitný Výstup**: Štruktúrované dáta vo formátoch JSON a CSV
+- **Flexibilná Konfigurácia**: Ľahké prispôsobenie cez .env súbor
+- **Kvalitný Výstup**: Štruktúrované dáta v JSON a CSV formátoch
 
 ### Technické Detaily
 
-- Postavené na Node.js ≥ 18.0.0
+- Vytvorené s Node.js ≥ 18.0.0
 - Využíva Apify SDK a Crawlee framework
-- Implementuje pokročilé stratégie opakovania
+- Implementuje pokročilé retry stratégie
 - Zabezpečuje validáciu a deduplikáciu dát
 
-### Spustenie s Podmanom
-
-Projekt je plne kontajnerizovaný a môže byť spustený pomocou Podmana:
-
-```bash
-# Zostavenie kontajnera
-podman build -t job-scraper-itssafer .
-
-# Spustenie kontajnera
-podman run -d \
-  --name job-scraper \
-  -v "./output:/app/output" \
-  -v "./.env:/app/.env" \
-  job-scraper-itssafer
-
-# Kontrola logov kontajnera
-podman logs -f job-scraper
-
-# Zastavenie kontajnera
-podman stop job-scraper
-```
-
-Výhody používania Podmanu:
-- Kontajnery bez root práv pre lepšiu bezpečnosť
-- Kompatibilita s OCI
-- Nevyžaduje daemon
-- Natívna integrácia so systemd
-- Multiplatformová podpora
+## 📊 Architektúra
