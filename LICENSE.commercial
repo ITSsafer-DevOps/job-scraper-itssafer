@@ -1,53 +1,49 @@
-# License for Job Scraper
 
-Copyright (c) 2025 Kristián Kašník
+  GNU AFFERO GENERAL PUBLIC LICENSE
+                       Version 3, 19 November 2007
 
-This project is dual-licensed under the AGPL-3.0 License and a Commercial License.
+ Copyright (c) 2025 Kristián Kašník
 
----
+ This project is dual-licensed under the GNU Affero General Public License 
+ version 3.0 (AGPL-3.0) and a Commercial License.
 
-## AGPL-3.0 License
+ You may use, modify, and distribute this software under the terms of the 
+ AGPL-3.0 license. Full license text can be found at: 
+ https://www.gnu.org/licenses/agpl-3.0.html
 
-This software is available under the GNU Affero General Public License version 3.0 (AGPL-3.0).  
-You may use, modify, and distribute this software under the terms of the AGPL-3.0 license.  
-Full license text can be found at: https://www.gnu.org/licenses/agpl-3.0.html
+ Alternatively, a commercial license is available for those who wish to use, 
+ modify, or distribute the software without the obligations of the AGPL-3.0.
 
----
+ Commercial License Terms:
 
-## Commercial License Terms
+ 1. DEFINITIONS
+    - "Software" means Job Scraper and all its components
+    - "Licensor" is Kristián Kašník
+    - "Licensee" is the holder of the commercial license
 
-1. DEFINITIONS  
-   - "Software" means Job Scraper and all its components  
-   - "Licensor" is Kristián Kašník  
-   - "Licensee" is the holder of the commercial license  
+ 2. GRANT OF LICENSE
+    This license grants the right to:
+    - Use the Software in commercial applications
+    - Modify the Software without the obligation to share changes
+    - Distribute the Software as part of a closed solution
 
-2. GRANT OF LICENSE  
-   This license grants the right to:  
-   - Use the Software in commercial applications  
-   - Modify the Software without the obligation to share changes  
-   - Distribute the Software as part of a closed solution  
+ 3. RESTRICTIONS
+    - No redistribution of the standalone Software
+    - No removal of copyright information
+    - No granting of sublicenses without the Licensor’s consent
 
-3. RESTRICTIONS  
-   - No redistribution of the standalone Software  
-   - No removal of copyright information  
-   - No granting of sublicenses without the Licensor’s consent  
+ 4. SUPPORT
+    - Priority email support
+    - Access to future updates
+    - Consultation during implementation
 
-4. SUPPORT  
-   - Priority email support  
-   - Access to future updates  
-   - Consultation during implementation  
+ 5. PRICE AND VALIDITY
+    - The license price is determined individually
+    - Validity is 1 year, with the option for renewal
+    - Includes all updates released during the validity period
 
-5. PRICE AND VALIDITY  
-   - The license price is determined individually  
-   - Validity is 1 year, with the option for renewal  
-   - Includes all updates released during the validity period  
+ 6. LIABILITY
+    The Software is provided "AS IS", without any warranties.
 
-6. LIABILITY  
-   The Software is provided "AS IS" without any warranties.
-
----
-
-## Contact
-
-For commercial licensing inquiries, please contact:  
-Email: [itssafer@itssafer.org](mailto:itssafer@itssafer.org)
+ For commercial licensing inquiries, please contact:
+ Email: itssafer@itssafer.org
