@@ -80,11 +80,11 @@ graph TD
 ### Installation
 
 ```bash
-# Klonovanie repozitára
+# Clone repository
 git clone <repo-url>
 cd job-scraper-itssafer
 
-# Inštalácia závislostí
+# Install dependencies
 npm install
 ```
 
@@ -175,16 +175,16 @@ interface Job {
         "min": 3000,
         "max": 5000,
         "currency": "EUR",
-        "period": "mesiac"
+        "period": "month"
     },
-    "employmentType": "plný úväzok",
+    "employmentType": "full time",
     "seniority": "senior",
     "tags": ["java", "spring", "postgresql"],
     "postedAt": "2025-10-07T00:00:00.000Z",
     "jobId": "5162007",
     "jobUrl": "https://www.profesia.sk/praca/example-corp/O5162007",
     "companyUrl": "https://firma.profesia.sk/example-corp",
-    "description": "Hľadáme skúseného software inžiniera..."
+    "description": "We are looking for experienced software engineer..."
 }
 ```
 
@@ -193,19 +193,19 @@ interface Job {
 ### Components
 
 1. **ProfesiaAdapter** (`src/adapters/ProfesiaAdapter.js`)
-   - Implementuje crawling logiku
-   - Manažuje session a requestov
-   - Zabezpečuje dodržiavanie robots.txt
+   - Implements crawling logic
+   - Manages session and requests
+   - Ensures robots.txt compliance
 
 2. **JobDetailParser** (`src/parsers/jobDetailParser.js`)
-   - Parsuje HTML detail stránky
-   - Normalizuje dátumy a platy
-   - Extrahovanie štruktúrovaných dát
+   - Parses HTML detail pages
+   - Normalizes dates and salaries
+   - Extracts structured data
 
 3. **Core Utils** (`src/utils/core.js`)
-   - Validácia a deduplikácia
-   - Logovanie a monitoring
-   - Pomocné funkcie
+   - Validation and deduplication
+   - Logging and monitoring
+   - Utility functions
 
 ### Sequence Diagram
 
@@ -237,10 +237,10 @@ sequenceDiagram
 The project includes unit tests and integration tests:
 
 ```bash
-# Spustenie unit testov pre parser
+# Run unit tests for parser
 node tests/parser_unit.test.js
 
-# Spustenie integračného testu adaptéra
+# Run integration test for adapter
 node tests/run_adapter_check.js
 ```
 
@@ -272,31 +272,31 @@ After crawling completion, a report is generated with aggregated data:
 
 The project implements best practices for ethical web scraping:
 
-- **Robots.txt**: Automatická kontrola a dodržiavanie
-- **Rate Limiting**: Konfigurovateľné delays medzi requestami
-- **Concurrent Access**: Limitované paralelné requesty
-- **User-Agent**: Transparentný identifikátor
-- **Error Handling**: Graceful degradation pri chybách
+- **Robots.txt**: Automatic checking and compliance
+- **Rate Limiting**: Configurable delays between requests
+- **Concurrent Access**: Limited parallel requests
+- **User-Agent**: Transparent identifier
+- **Error Handling**: Graceful degradation on errors
 
-## 🔍 Poznámky k Implementácii
+## 🔍 Implementation Notes
 
 ### Rate Limiting
 
-Crawler používa sofistikovaný rate limiting:
+Crawler uses sophisticated rate limiting:
 
 ```javascript
-// Príklad implementácie v ProfesiaAdapter
+// Example implementation in ProfesiaAdapter
 function randomDelay(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Použitie s env konfiguráciou
+// Usage with env configuration
 await sleep(randomDelay(this.delayMin, this.delayMax));
 ```
 
 ### Retry Strategy
 
-Implementovaná exponenciálna backoff stratégia:
+Implemented exponential backoff strategy:
 
 ```javascript
 const crawler = new PuppeteerCrawler({
@@ -305,25 +305,25 @@ const crawler = new PuppeteerCrawler({
 });
 ```
 
-## 📦 Výstupy
+## 📦 Outputs
 
-Crawler generuje dva typy výstupov:
+Crawler generates two types of outputs:
 
 1. **JSON** (`./output/jobs.json`):
-   - Kompletné dáta v štruktúrovanom formáte
-   - Vhodné pre ďalšie spracovanie
+   - Complete data in structured format
+   - Suitable for further processing
 
 2. **CSV** (`./output/jobs.csv`):
-   - Tabuľkový formát pre analýzu
-   - Kompatibilné s Excel/Google Sheets
+   - Tabular format for analysis
+   - Compatible with Excel/Google Sheets
 
-## 🤝 Prispievanie
+## 🤝 Contributing
 
-1. Fork repozitára
-2. Vytvorte feature branch
-3. Commit zmeny
-4. Push do branch
-5. Vytvorte Pull Request
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## 📄 Licensing
 
@@ -343,7 +343,7 @@ For commercial use, a commercial license is required, which provides:
 - Custom modifications without sharing
 
 To obtain a commercial license, contact:
-- Email: itssafer@itssafer.org
+- Email: [itssafer@itssafer.org](mailto:itssafer@itssafer.org)
 - Subject: Job Scraper - Commercial License
 
 ## 🙏 Acknowledgments
@@ -352,12 +352,12 @@ To obtain a commercial license, contact:
 - [Crawlee](https://crawlee.dev/)
 - [Puppeteer](https://pptr.dev/)
 
-## 👤 Autor
+## 👤 Author
 
-- **Meno**: Kristián Kašník
-- **Email**: itssafer@itssafer.org
+- **Name**: Kristián Kašník
+- **Email**: [itssafer@itssafer.org](mailto:itssafer@itssafer.org)
 - **GitHub**: [ITSsafer-DevOps](https://github.com/ITSsafer-DevOps)
 
 ---
 
-Vytvorené s ❤️ pre lepšiu analýzu pracovného trhu
+Created with ❤️ for better job market analysis
