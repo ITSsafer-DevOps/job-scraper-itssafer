@@ -58,10 +58,10 @@ graph TD
         I & J --> |Save| K[File System<br/>Persistent Storage]
     end
     
-    classDef core fill:#ffffff,stroke:#000000,stroke-width:2px
-    classDef data fill:#ffffff,stroke:#000000,stroke-width:2px
-    classDef transform fill:#ffffff,stroke:#000000,stroke-width:2px
-    classDef storage fill:#ffffff,stroke:#000000,stroke-width:2px
+    classDef core fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
+    classDef data fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
+    classDef transform fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
+    classDef storage fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
     
     class A,B,C core
     class D,E data
