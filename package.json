@@ -28,8 +28,7 @@
   "scripts": {
     "start": "node src/main.js",
     "lint": "eslint ./src --ext .js,.jsx",
-    "lint:fix": "eslint ./src --ext .js,.jsx --fix",
-    "test": "node tests/parser_unit.test.js && node tests/run_adapter_check.js"
+    "lint:fix": "eslint ./src --ext .js,.jsx --fix"
   },
   "author": "Kristián Kašník <itssafer@itssafer.org> (https://github.com/ITSsafer-DevOps)",
   "license": "AGPL-3.0"

@@ -91,14 +91,27 @@ function parseSalary(text) {
 function parsePostedAt(text, now = new Date()) {
     if (!text) return null;
     const txt = String(text).trim();
+    
+    // Pred X dňami/dňom
     const daysMatch = txt.match(/pred\s+(\d+)\s*(d|dni|dňami|dňom)/i);
     if (daysMatch) {
         const daysAgo = Number(daysMatch[1]);
         const date = new Date(now);
         date.setDate(date.getDate() - daysAgo);
-        return date.toISOString();
+        return date.toISOString().split('T')[0];
     }
+    
+    // Pred X hodinami
+    const hoursMatch = txt.match(/pred\s+(\d+)\s*(h|hod|hodinou|hodinami)/i);
+    if (hoursMatch) {
+        return now.toISOString().split('T')[0];
+    }
+    
+    // Skúsime parsovať ako ISO dátum
     const iso = new Date(txt);
-    if (!isNaN(iso.getTime())) return iso.toISOString();
-    return txt;
+    if (!isNaN(iso.getTime())) {
+        return iso.toISOString().split('T')[0];
+    }
+    
+    return null;
 }
