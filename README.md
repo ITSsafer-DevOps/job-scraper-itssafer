@@ -35,42 +35,39 @@ This tool is designed as a sophisticated solution for automated job listing coll
 
 ```mermaid
 graph TD
-    subgraph Core ["Core Application"]
-        A[main.js<br/>Entry Point] --> B[ProfesiaAdapter]
-        B --> C[PuppeteerCrawler]
+    subgraph Core ["Core Components"]
+        A[main.js<br/>Configuration & Setup] --> |Initialize| B[ProfesiaAdapter<br/>Crawling Manager]
+        B --> |Configure| C[PuppeteerCrawler<br/>Browser Control]
     end
     
-    subgraph Crawling ["Data Acquisition"]
-        C --> D[Listing Pages<br/>Job Overview]
-        C --> E[Detail Pages<br/>Complete Info]
-        D --> |Next Page<br/>Links| D
+    subgraph Data ["Data Collection"]
+        C --> |Navigate & List| D[List View<br/>Job Listings]
+        D --> |Extract Links| E[Detail View<br/>Job Information]
+        D --> |Pagination| D
     end
     
-    subgraph Processing ["Data Processing"]
-        E --> F[jobDetailParser<br/>HTML Extraction]
-        F --> G[Data Validation<br/>Quality Check]
-        G --> H[Deduplication<br/>Unique Entries]
+    subgraph Transform ["Data Processing"]
+        E --> |Parse HTML| F[Parser<br/>Data Extraction]
+        F --> |Validate| G[Validation<br/>Data Quality]
+        G --> |Remove Duplicates| H[Deduplication<br/>Unique Jobs]
     end
     
-    subgraph Export ["Data Export"]
-        H --> I[JSON Export<br/>Raw Data]
-        H --> J[CSV Export<br/>Analytics]
-        I --> K[Storage]
-        J --> K[Storage]
+    subgraph Storage ["Data Export & Storage"]
+        H --> |Structure Data| I[JSON Format<br/>Complete Data]
+        H --> |Transform| J[CSV Format<br/>Analysis Ready]
+        I & J --> |Save| K[File System<br/>Persistent Storage]
     end
     
-    style A fill:#f9f,stroke:#333,stroke-width:4px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style F fill:#bbf,stroke:#333,stroke-width:2px
-    
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
-    classDef core fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
-    classDef process fill:#f3e5f5,stroke:#8e24aa,stroke-width:2px
-    classDef export fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    classDef core fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    classDef data fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px
+    classDef transform fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef storage fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
     
     class A,B,C core
-    class D,E,F,G,H process
-    class I,J,K export
+    class D,E data
+    class F,G,H transform
+    class I,J,K storage
+```
 ```
 
 ### Sequence Diagram

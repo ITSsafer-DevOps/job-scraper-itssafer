@@ -34,42 +34,39 @@ Tento nástroj je navrhnutý ako sofistikované riešenie pre automatizované zb
 
 ```mermaid
 graph TD
-    subgraph Jadro ["Jadro Aplikácie"]
-        A[main.js<br/>Vstupný Bod] --> B[ProfesiaAdapter]
-        B --> C[PuppeteerCrawler]
+    subgraph Core ["Hlavné Komponenty"]
+        A[main.js<br/>Konfigurácia & Nastavenie] --> |Inicializácia| B[ProfesiaAdapter<br/>Správca Crawlingu]
+        B --> |Konfigurácia| C[PuppeteerCrawler<br/>Ovládanie Prehliadača]
     end
     
-    subgraph Crawling ["Získavanie Dát"]
-        C --> D[Listing Stránky<br/>Prehľad Pozícií]
-        C --> E[Detail Stránky<br/>Kompletné Info]
-        D --> |Odkazy na<br/>Ďalšie Stránky| D
+    subgraph Data ["Zber Dát"]
+        C --> |Navigácia & Výpis| D[Zoznam<br/>Pracovné Ponuky]
+        D --> |Extrakcia Odkazov| E[Detail<br/>Informácie o Pozícii]
+        D --> |Stránkovanie| D
     end
     
-    subgraph Spracovanie ["Spracovanie Dát"]
-        E --> F[jobDetailParser<br/>HTML Extrakcia]
-        F --> G[Validácia Dát<br/>Kontrola Kvality]
-        G --> H[Deduplikácia<br/>Unikátne Záznamy]
+    subgraph Transform ["Spracovanie Dát"]
+        E --> |Parsovanie HTML| F[Parser<br/>Extrakcia Dát]
+        F --> |Validácia| G[Validácia<br/>Kvalita Dát]
+        G --> |Odstránenie Duplicít| H[Deduplikácia<br/>Unikátne Pozície]
     end
     
-    subgraph Export ["Export Dát"]
-        H --> I[JSON Export<br/>Surové Dáta]
-        H --> J[CSV Export<br/>Analytika]
-        I --> K[Úložisko]
-        J --> K[Úložisko]
+    subgraph Storage ["Export a Úložisko"]
+        H --> |Štruktúrovanie| I[JSON Formát<br/>Kompletné Dáta]
+        H --> |Transformácia| J[CSV Formát<br/>Pripravené na Analýzu]
+        I & J --> |Uloženie| K[Súborový Systém<br/>Trvalé Úložisko]
     end
     
-    style A fill:#f9f,stroke:#333,stroke-width:4px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style F fill:#bbf,stroke:#333,stroke-width:2px
-    
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
-    classDef core fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
-    classDef process fill:#f3e5f5,stroke:#8e24aa,stroke-width:2px
-    classDef export fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    classDef core fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    classDef data fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px
+    classDef transform fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef storage fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
     
     class A,B,C core
-    class D,E,F,G,H process
-    class I,J,K export
+    class D,E data
+    class F,G,H transform
+    class I,J,K storage
+```
 ```
 
 ### Sekvenčný Diagram
