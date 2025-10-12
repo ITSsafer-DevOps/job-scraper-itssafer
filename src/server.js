@@ -94,18 +94,30 @@ const broadcastMessage = (message) => {
     });
 };
 
-// Override console.log pre zachytenie výstupu
-const originalLog = console.log;
-console.log = (...args) => {
-    originalLog.apply(console, args);
-    const message = args.map(arg => {
-        if (typeof arg === 'object') {
-            return JSON.stringify(arg, null, 2);
-        }
-        return arg.toString();
-    }).join(' ');
-    broadcastMessage(message);
-};
+// Override pre zachytenie všetkých typov logov
+function overrideConsole() {
+    const methods = ['log', 'info', 'warn', 'error'];
+    methods.forEach(method => {
+        const original = console[method];
+        console[method] = (...args) => {
+            original.apply(console, args);
+            const message = args.map(arg => {
+                if (typeof arg === 'object') {
+                    return JSON.stringify(arg, null, 2);
+                }
+                return arg.toString();
+            }).join(' ');
+            broadcastMessage({
+                type: 'log',
+                level: method,
+                timestamp: new Date().toISOString(),
+                message
+            });
+        };
+    });
+}
+
+overrideConsole();
 
 // Spustenie servera
 server.listen(port, () => {

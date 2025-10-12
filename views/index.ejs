@@ -199,9 +199,11 @@
             padding: 15px;
             margin-top: 20px;
             font-family: 'Fira Code', monospace;
-            height: 300px;
+            height: 500px;
             overflow-y: auto;
             position: relative;
+            color: #4CAF50;
+            line-height: 1.4;
         }
 
         .terminal-header {
@@ -268,18 +270,50 @@
 
         .watermark {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0.2;
-            pointer-events: none;
-            z-index: -1;
+            bottom: 0;
+            right: 0;
+            opacity: 0.8;
+            z-index: 1000;
+            margin: 0;
+            padding: 0;
         }
 
         .watermark img {
-            width: 150px;
+            width: 80px;
             height: auto;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0;
         }
+
+        .watermark img:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .download-panel {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            border: 1px solid var(--accent);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        .log-info { color: var(--text-primary); }
+        .log-warn { color: #ffbd2e; }
+        .log-error { color: #ff5f56; }
     </style>
 </head>
 <body>
@@ -340,19 +374,32 @@
                     const line = document.createElement('div');
                     line.className = 'terminal-line';
                     
-                    const prompt = document.createElement('span');
-                    prompt.className = 'terminal-prompt';
-                    prompt.textContent = '>';
+                    if (!terminal.querySelector('.prompt-line')) {
+                        const promptLine = document.createElement('div');
+                        promptLine.className = 'terminal-line prompt-line';
+                        promptLine.innerHTML = '<span class="terminal-prompt" style="color: #4CAF50;">itssafer@itssafer:~/VSCode/job-scraper-itssafer<br>$ npm run start:web</span>';
+                        terminal.appendChild(promptLine);
+                        
+                        const npmLine = document.createElement('div');
+                        npmLine.className = 'terminal-line';
+                        npmLine.innerHTML = '<span class="log-info">> job-scraper-itssafer@1.0.0 start:web<br>> node src/server.js</span>';
+                        terminal.appendChild(npmLine);
+                    }
                     
                     const output = document.createElement('span');
+                    output.className = 'log-' + (data.level || 'info');
                     output.textContent = data.message;
                     
-                    line.appendChild(prompt);
                     line.appendChild(output);
                     terminal.appendChild(line);
                     
                     // Auto-scroll to bottom
                     terminal.scrollTop = terminal.scrollHeight;
+
+                    // Ak správa obsahuje "finished", zobrazíme download panel
+                    if (data.message.includes('Crawler finished')) {
+                        document.getElementById('downloadPanel').style.display = 'block';
+                    }
                 }
             } catch (error) {
                 console.error('Error parsing WebSocket message:', error);
