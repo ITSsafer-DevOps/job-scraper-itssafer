@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { startCrawler } from './main.js';
-import { Server } from 'ws';
+import WebSocket from 'ws';
 import http from 'http';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -71,7 +71,7 @@ app.get('/download/json', (req, res) => {
 const server = http.createServer(app);
 
 // WebSocket server
-const wss = new Server({ server });
+const wss = new WebSocket.Server({ server });
 
 // Uloženie všetkých aktívnych WebSocket spojení
 const clients = new Set();

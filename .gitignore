@@ -8,7 +8,15 @@ output/
 storage/
 
 # Environment variables
-.env
+*.env*
+!.env.example
+
+# Storage and temp files
+storage/**/*
+!storage/.gitkeep
+
+# Package managers
+yarn.lock
 
 # Keep assets directory but ignore specific file types
 assets/*
