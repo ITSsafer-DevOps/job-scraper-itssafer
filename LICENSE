@@ -1,0 +1,39 @@
+                                        GNU AFFERO GENERAL PUBLIC LICENSE
+                       Version 3, 19 November 2007
+
+ Copyright (C) 2025 Kristián Kašník
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Additional Terms:
+
+1. You must retain all copyright, patent, trademark, and attribution notices 
+   that are present in the software.
+
+2. If you modify the software and make it available to others (including 
+   through a network interface), you must:
+   a) Make the modified source code freely available
+   b) License your modifications under the AGPL-3.0
+   c) Document your changes
+
+3. Network Use is Distribution: Making the functionality of the software 
+   available to others through a network interface is considered distribution
+   and triggers the requirements above.
+
+4. No Trademark Rights: This license does not grant permission to use trade 
+   names, trademarks, service marks, or product names of the Licensor.
+
+For commercial licensing options that remove these restrictions, please contact:
+Email: itssafer@itssafer.org
+Subject: Job Scraper - Commercial License

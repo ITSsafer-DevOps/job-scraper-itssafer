@@ -1,0 +1,36 @@
+{
+  "name": "job-scraper-itssafer",
+  "version": "1.0.0",
+  "description": "Intelligent job listing crawler for Profesia.sk with ethical scraping practices",
+  "homepage": "https://github.com/ITSsafer-DevOps/job-scraper-itssafer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ITSsafer-DevOps/job-scraper-itssafer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ITSsafer-DevOps/job-scraper-itssafer/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "apify": "^3.2.6",
+    "cheerio": "^1.1.2",
+    "crawlee": "^3.15.1",
+    "dotenv": "^17.2.3",
+    "puppeteer": "24.8.0"
+  },
+  "devDependencies": {
+    "@apify/eslint-config": "^0.4.0",
+    "eslint": "^8.50.0"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "lint": "eslint ./src --ext .js,.jsx",
+    "lint:fix": "eslint ./src --ext .js,.jsx --fix",
+    "test": "node tests/parser_unit.test.js && node tests/run_adapter_check.js"
+  },
+  "author": "Kristián Kašník <itssafer@itssafer.org> (https://github.com/ITSsafer-DevOps)",
+  "license": "AGPL-3.0"
+}

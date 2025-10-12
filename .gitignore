@@ -1,0 +1,26 @@
+# Node.js
+node_modules/
+
+# Output files
+output/
+
+# Storage (Crawlee/Apify temp files)
+storage/
+
+# Environment variables
+.env
+
+# Keep assets directory but ignore specific file types
+assets/*
+!assets/.gitkeep
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
