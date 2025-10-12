@@ -24,3 +24,20 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Debug files
+*.debug
+debug.log
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Local backup files
+*.bak
+backup/

@@ -14,7 +14,22 @@ Inteligentný crawler na extrahovanie pracovných ponúk z portálu Profesia.sk,
 
 ## 🎯 O Projekte
 
-Tento nástroj je navrhnutý ako sofistikované riešenie pre automatizované zbieranie pracovných ponúk z Profesia.sk. Využíva moderné technológie a osvedčené postupy pre etický web scraping:
+Tento nástroj je navrhnutý ako sofistikované riešenie pre automatizované zbieranie pracovných ponúk z Profesia.sk. Využíva moderné technológie a osvedčené postupy pre etický web scraping a ponúka ako príkazový riadok, tak aj webové rozhranie:
+
+### Spôsoby Prístupu
+
+1. **Príkazový Riadok (CLI)**
+   - Priame spustenie cez Node.js
+   - Konfigurácia cez .env súbor
+   - Okamžitý výstup do súborov
+   - Vhodné pre automatizáciu a skripty
+
+2. **Webové Rozhranie**
+   - Používateľsky prívetivé formulárové ovládanie
+   - Sledovanie priebehu v reálnom čase
+   - Zobrazenie terminálového výstupu naživo
+   - Okamžité sťahovanie súborov
+   - Interaktívny náhľad pracovných ponúk
 
 ### Kľúčové Funkcie
 
@@ -126,6 +141,46 @@ sequenceDiagram
         E-->>M: Export Dokončený
         deactivate E
     end
+```
+
+### Tok Webového Rozhrania
+
+```mermaid
+sequenceDiagram
+    participant U as Používateľ
+    participant W as Web UI
+    participant S as Server
+    participant WS as WebSocket
+    participant C as Crawler
+    participant F as Súborový Systém
+
+    U->>W: Prístup k Web Rozhraniu
+    W->>S: GET /
+    S-->>W: Zobrazenie Formulára
+    
+    U->>W: Odoslanie Formulára
+    W->>S: POST /scrape
+    
+    S->>WS: Inicializácia Spojenia
+    WS-->>W: Pripojené
+    
+    S->>C: Spustenie Crawlera
+    
+    loop Pre Každú Udalosť
+        C->>WS: Logovanie Priebehu
+        WS-->>W: Aktualizácia Terminálu
+    end
+    
+    C->>F: Zápis Výstupných Súborov
+    C-->>S: Dokončenie
+    
+    S-->>W: Zobrazenie Výsledkov a Odkazov
+    
+    U->>W: Kliknutie na Stiahnutie
+    W->>S: GET /download/{format}
+    S->>F: Čítanie Súboru
+    F-->>S: Obsah Súboru
+    S-->>U: Stiahnutie Súboru
 ```
 
 ### 🔄 Proces Spracovania

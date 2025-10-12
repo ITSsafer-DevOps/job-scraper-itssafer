@@ -15,7 +15,22 @@ Intelligent crawler for extracting job listings from Profesia.sk portal, built w
 
 ## 🎯 About the Project
 
-This tool is designed as a sophisticated solution for automated job listing collection from Profesia.sk. It utilizes modern technologies and best practices for ethical web scraping:
+This tool is designed as a sophisticated solution for automated job listing collection from Profesia.sk. It utilizes modern technologies and best practices for ethical web scraping and offers both command-line and web interfaces:
+
+### Access Methods
+
+1. **Command Line Interface (CLI)**
+   - Direct execution through Node.js
+   - Configuration via .env file
+   - Immediate file output
+   - Suitable for automation and scripting
+
+2. **Web Interface**
+   - User-friendly form controls
+   - Real-time progress monitoring
+   - Live terminal output display
+   - Instant file downloads
+   - Interactive job listing preview
 
 ### Key Features
 
@@ -127,6 +142,46 @@ sequenceDiagram
         E-->>M: Export Complete
         deactivate E
     end
+```
+
+### Web Interface Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant W as Web UI
+    participant S as Server
+    participant WS as WebSocket
+    participant C as Crawler
+    participant F as File System
+
+    U->>W: Access Web Interface
+    W->>S: GET /
+    S-->>W: Render Form
+    
+    U->>W: Submit Form
+    W->>S: POST /scrape
+    
+    S->>WS: Initialize Connection
+    WS-->>W: Connected
+    
+    S->>C: Start Crawler
+    
+    loop For Each Event
+        C->>WS: Log Progress
+        WS-->>W: Update Terminal
+    end
+    
+    C->>F: Write Output Files
+    C-->>S: Complete
+    
+    S-->>W: Show Results & Download Links
+    
+    U->>W: Click Download
+    W->>S: GET /download/{format}
+    S->>F: Read File
+    F-->>S: File Content
+    S-->>U: Download File
 ```
 
 ### 🔄 Processing Flow
